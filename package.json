@@ -1,0 +1,21 @@
+{
+  "name": "url-shortner-server",
+  "version": "1.0.0",
+  "description": "A project created for url shortner backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "serve": "nodemon server.js"
+  },
+  "author": "Abhijeet Gavali",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.0",
+    "nodemailer": "^6.8.0",
+    "shortid": "^2.2.16"
+  }
+}
