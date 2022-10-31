@@ -5,8 +5,7 @@ app.use(express.json());
 const cors = require("cors");
 app.use(
   cors({
-    origin: "*",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: "http://localhost:3001",
   })
 );
 const bcrypt = require("bcryptjs");
