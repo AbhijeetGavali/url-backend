@@ -1,15 +1,18 @@
 const express = require("express");
-const app = express();
 const mongoose = require("mongoose");
-app.use(express.json());
-const cors = require("cors");
-app.use(cors());
-app.options("*", cors());
 const bcrypt = require("bcryptjs");
-app.use(express.urlencoded({ extended: false }));
+const cors = require("cors");
 
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
+
+const app = express();
+const PORT = 8081;
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.disable("x-powered-by");
 
 const JWT_SECRET = "enacuviaem()aiyg8t87qtf9y3rj3203qjn8r3i0?[]]pou89ywe";
 
@@ -26,9 +29,14 @@ mongoose
   .catch((e) => console.log(e));
 
 require("./userDetails");
-const ShortUrl = require("./urls");
 
+const ShortUrl = require("./urls");
 const User = mongoose.model("UserInfo");
+
+app.get("/", (req, res) => {
+  return res.json({ msg: "Server is up and running" });
+});
+
 app.post("/register", async (req, res) => {
   const { fname, lname, email, password } = req.body;
 
@@ -225,6 +233,6 @@ app.get("/s/:shortUrl", async (req, res) => {
   console.log("Short URL", req);
 });
 
-app.listen(8081, () => {
-  console.log("Server Started at port 8081");
+app.listen(PORT, async () => {
+  console.log(`Server started at ${PORT}`);
 });
