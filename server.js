@@ -3,7 +3,12 @@ const app = express();
 const mongoose = require("mongoose");
 app.use(express.json());
 const cors = require("cors");
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  })
+);
 const bcrypt = require("bcryptjs");
 app.use(express.urlencoded({ extended: false }));
 
