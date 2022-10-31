@@ -3,11 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 app.use(express.json());
 const cors = require("cors");
-app.use(
-  cors({
-    origin: "http://localhost:3001",
-  })
-);
+app.use(cors());
+app.options("*", cors());
 const bcrypt = require("bcryptjs");
 app.use(express.urlencoded({ extended: false }));
 
